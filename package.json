@@ -1,0 +1,18 @@
+{
+  "name": "hetrixweb",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "preact": "^10.5.13",
+    "recoil": "^0.5.2",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.0.0",
+    "vite": "^2.6.4"
+  }
+}
