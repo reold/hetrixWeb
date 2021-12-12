@@ -1,15 +1,13 @@
 import { useState } from "preact/hooks";
 
 import { useRecoilState } from "recoil";
-import { timelineState } from "../Atoms";
+import { timelineState } from "../../Atoms";
 
 import {
   changeObjectTrack,
   getObjectLocation,
   VerticalBound,
-} from "../helpers";
-
-import styles from "./draggableitem.module.css";
+} from "../../helpers";
 
 export default function DraggableItem(props) {
   const [timelineInfo, setTimelineInfo] = useRecoilState(timelineState);
@@ -40,7 +38,6 @@ export default function DraggableItem(props) {
     setObjectMoving(true);
     setPosition({ ...position, start_x: e.clientX, start_y: e.clientY });
 
-    document.getElementById(props.id).className = "draggable-selected";
     document.getElementById(props.id).style.zIndex = 100;
   };
   const handleMouseUp = (e) => {
@@ -81,7 +78,6 @@ export default function DraggableItem(props) {
         currentTrackNo
       );
     }
-    document.getElementById(props.id).className = "draggable";
 
     document.getElementById(props.id).style.zIndex = 1;
   };
@@ -116,16 +112,18 @@ export default function DraggableItem(props) {
 
   return (
     <div
-      className={
-        objectMoving === true ? styles.draggableSelected : styles.draggable
-      }
+      // className={
+      //   objectMoving === true ? styles.draggableSelected : styles.draggable
+      // }
+
+      className={`w-36 h-[40px] absolute rounded-md bg-blue-200 ring-2 ring-black${
+        objectMoving === true ? " shadow-lg shadow-blue-500" : ""
+      }`}
       id={props.id}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
       onMouseMove={handleMouseMove}
       style={{
-        ...props.style,
-        position: "absolute",
         zIndex: 10,
         top: position.top,
         left: position.left,

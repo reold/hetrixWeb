@@ -1,13 +1,11 @@
 import { useRecoilState } from "recoil";
 import { timelineState } from "./Atoms";
 
-import styles from "./app.module.css";
-
 import { getObjectLocation } from "./helpers";
 
 import { v4 as uuidv4 } from "uuid";
 
-import Timeline from "./components/Timeline";
+import Timeline from "./components/timeline/Timeline";
 
 import HetrixLogo from "./assets/Hetrix Logo Mini.png";
 
@@ -44,14 +42,14 @@ export function App() {
   };
 
   return (
-    <div className={styles.main}>
-      <div className={styles.header}>
-        <img src={HetrixLogo} width={150} height={50} />
+    <div className="h-screen w-screen bg-slate-800 flex flex-col">
+      <div className="flex flex-row h-16 pl-2 bg-slate-700 justify-start items-center space-x-5 text-white">
+        <img src={HetrixLogo} className="w-[150px] h-[50px]" />
         <button>Files</button>
         <button>Edit</button>
         <p>Demo frontend</p>
       </div>
-      <div className={styles.controlbar}>
+      <div className="flex flex-row justify-evenly space-x-5 bg-slate-300 w-full h-15 py-3">
         <button onClick={createObject}>create element</button>
         <button onClick={createTrack}>create track</button>
         <button onClick={logState}>log state</button>
@@ -63,7 +61,7 @@ export function App() {
           call helper
         </button>
       </div>
-      <Timeline className={styles.timeline} />
+      <Timeline />
     </div>
   );
 }
