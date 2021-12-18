@@ -6,6 +6,7 @@ import { getObjectLocation } from "./helpers";
 import { v4 as uuidv4 } from "uuid";
 
 import Timeline from "./components/timeline/Timeline";
+import Preview from "./components/preview/Preview";
 
 import HetrixLogo from "./assets/Hetrix Logo Mini.png";
 
@@ -42,7 +43,7 @@ export function App() {
   };
 
   return (
-    <div className="h-screen w-screen bg-slate-800 flex flex-col">
+    <div className="h-screen w-screen bg-slate-800 flex flex-col font-bold">
       <div className="flex flex-row h-16 pl-2 bg-slate-700 justify-start items-center space-x-5 text-white">
         <img src={HetrixLogo} className="w-[150px] h-[50px]" />
         <button>Files</button>
@@ -61,6 +62,7 @@ export function App() {
           call helper
         </button>
       </div>
+      <Preview />
       <Timeline />
     </div>
   );

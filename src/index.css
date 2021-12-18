@@ -33,17 +33,7 @@ body {
 }
 
 button {
-  padding: 5px;
-
-  background-color: lightpink;
-  color: white;
-
-  border-style: dashed;
-  border-width: 2px;
-  border-color: lightsalmon;
-
-  border-radius: 5px;
-  transition: 0.2s;
+  @apply font-bold p-1 bg-rose-300 text-white border-dashed border-2 border-orange-400 rounded-md duration-200;
 }
 
 button:hover {
