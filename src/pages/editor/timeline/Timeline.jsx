@@ -1,5 +1,5 @@
 import { useRecoilState } from "recoil";
-import { timelineState } from "../../Atoms";
+import { timelineState } from "../../../Atoms";
 
 import Track from "./Track";
 
