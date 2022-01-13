@@ -1,7 +1,7 @@
 import { useState } from "preact/hooks";
 
 import { useRecoilState } from "recoil";
-import { timelineState } from "../../Atoms";
+import { projectState, timelineState } from "../../Atoms";
 
 import { eel } from "../../eel";
 
@@ -16,6 +16,7 @@ import HetrixLogo from "../../assets/Hetrix Logo Mini.png";
 
 export default function Editor() {
   const [timelineInfo, setTimelineInfo] = useRecoilState(timelineState);
+  const [projectInfo, setProjectInfo] = useRecoilState(projectState);
   const [showControlbar, setShowControlbar] = useState(false);
 
   const createTrack = () => {
@@ -51,6 +52,7 @@ export default function Editor() {
     <>
       <div className="flex flex-row h-16 pl-2 bg-slate-700 justify-start items-center space-x-5 text-white">
         <img src={HetrixLogo} className="w-[150px] h-[50px]" />
+        <p>{projectInfo["name"]}</p>
         <button>Files</button>
         <button>Edit</button>
         <button
@@ -60,7 +62,6 @@ export default function Editor() {
         >
           Controls
         </button>
-        <p>Demo frontend</p>
       </div>
       {showControlbar ? (
         <div className="flex flex-row justify-evenly space-x-5 bg-slate-300 w-full h-15 py-3">

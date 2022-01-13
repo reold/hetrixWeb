@@ -31,13 +31,3 @@ body {
 
   text-align: center;
 }
-
-button {
-  @apply font-bold p-1 bg-rose-300 text-white border-dashed border-2 border-orange-400 rounded-md duration-200;
-}
-
-button:hover {
-  background-color: lightsalmon;
-
-  padding: 6px;
-}

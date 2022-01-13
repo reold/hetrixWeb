@@ -1,13 +1,13 @@
 import { useState } from "preact/hooks";
 
 import { useRecoilState } from "recoil";
-import { timelineState } from "../../Atoms";
+import { timelineState } from "../../../Atoms";
 
 import {
   changeObjectTrack,
   getObjectLocation,
   VerticalBound,
-} from "../../helpers";
+} from "../../../helpers";
 
 export default function DraggableItem(props) {
   const [timelineInfo, setTimelineInfo] = useRecoilState(timelineState);
