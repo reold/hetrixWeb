@@ -68,14 +68,14 @@ export default function Home() {
           <p>Name: </p>
           <Input ref={projectNameRef} onEnter={newProject} />
         </Panel>
-        <div className="flex flex-row items-center justify-evenly w-full">
+        <Panel axis="hor" ic je className="w-full">
           <Button type="dan" onClick={newProjectDialog}>
             cancel
           </Button>
           <Button type="pri" onClick={newProject}>
             continue
           </Button>
-        </div>
+        </Panel>
       </Dialog>
     </>
   );

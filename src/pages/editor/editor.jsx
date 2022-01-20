@@ -1,13 +1,11 @@
 import { useState } from "preact/hooks";
 
 import { useRecoilState } from "recoil";
-import { projectState, timelineState } from "../../Atoms";
+import { projectState } from "../../Atoms";
+
+import * as core from "./core";
 
 import { eel } from "../../eel";
-
-import { getObjectLocation } from "../../helpers";
-
-import { v4 as uuidv4 } from "uuid";
 
 import Timeline from "./timeline/Timeline";
 import Preview from "./preview/Preview";
@@ -15,38 +13,8 @@ import Preview from "./preview/Preview";
 import HetrixLogo from "../../assets/Hetrix Logo Mini.png";
 
 export default function Editor() {
-  const [timelineInfo, setTimelineInfo] = useRecoilState(timelineState);
   const [projectInfo, setProjectInfo] = useRecoilState(projectState);
   const [showControlbar, setShowControlbar] = useState(false);
-
-  const createTrack = () => {
-    setTimelineInfo((oldTimelineInfo) => {
-      let newTimelineInfo = JSON.parse(JSON.stringify(oldTimelineInfo));
-
-      newTimelineInfo["tracks"].push({ objects: [] });
-
-      return newTimelineInfo;
-    });
-  };
-
-  const createObject = () => {
-    setTimelineInfo((oldTimelineInfo) => {
-      let newTimelineInfo = JSON.parse(JSON.stringify(oldTimelineInfo));
-
-      newTimelineInfo["tracks"].at(-1)["objects"].push({
-        text: `clip - ${uuidv4().slice(0, 5)}`,
-        id: uuidv4(),
-
-        left: 0,
-      });
-
-      return newTimelineInfo;
-    });
-  };
-
-  const logState = () => {
-    console.log(JSON.stringify(timelineInfo));
-  };
 
   return (
     <>
@@ -65,16 +33,8 @@ export default function Editor() {
       </div>
       {showControlbar ? (
         <div className="flex flex-row justify-evenly space-x-5 bg-slate-300 w-full h-15 py-3">
-          <button onClick={createObject}>create element</button>
-          <button onClick={createTrack}>create track</button>
-          <button onClick={logState}>log state</button>
-          <button
-            onClick={() => {
-              console.log(getObjectLocation(timelineInfo, "100"));
-            }}
-          >
-            call helper
-          </button>
+          <button onClick={core.createObject}>create element</button>
+          <button onClick={core.createTrack}>create track</button>
           <button
             onClick={() => {
               eel.hello();

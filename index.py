@@ -3,8 +3,6 @@ import eel
 import sys
 import os
 
-from pyautogui import size as screen_size
-
 # main
 script_dir = os.path.dirname(__file__)
 
